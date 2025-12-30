@@ -3,12 +3,15 @@ const cors = require('cors');
 const path = require('path');
 const { initDatabase } = require('./database');
 const habitacionesRoutes = require('./routes/habitaciones');
+const alquilerRoutes = require('./routes/alquiler');
 
 const app = express();
+app.use(cors({ origin: "http://localhost:5173" }));
+
 const PORT = process.env.PORT || 3000;
 
 // Middlewares
-app.use(cors());
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -17,6 +20,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Rutas API
 app.use('/api/habitaciones', habitacionesRoutes);
+app.use('/api/alquiler', alquilerRoutes);
+
 
 // Ruta raíz - servir el frontend
 app.get('/', (req, res) => {

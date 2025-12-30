@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: habitaciones-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: habitaciones-backend
+  template:
+    metadata:
+      labels:
+        app: habitaciones-backend
+    spec:
+      containers:
+        - name: backend
+          image: habitaciones-backend:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: habitaciones-backend
+spec:
+  selector:
+    app: habitaciones-backend
+  ports:
+    - port: 3000
+      targetPort: 3000
+  type: ClusterIP

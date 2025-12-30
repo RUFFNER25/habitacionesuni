@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: habitaciones-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: habitaciones-frontend
+  template:
+    metadata:
+      labels:
+        app: habitaciones-frontend
+    spec:
+      containers:
+        - name: frontend
+          image: habitaciones-frontend:k8s
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: habitaciones-frontend
+spec:
+  selector:
+    app: habitaciones-frontend
+  ports:
+    - port: 80
+      targetPort: 80
+  type: ClusterIP
