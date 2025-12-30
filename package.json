@@ -1,0 +1,23 @@
+{
+  "name": "habitaciones-uni",
+  "version": "1.0.0",
+  "description": "Sistema de alquiler de habitaciones para estudiantes universitarios",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "seed": "node seed.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": ["habitaciones", "alquiler", "estudiantes"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "sqlite3": "^5.1.6",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
+
